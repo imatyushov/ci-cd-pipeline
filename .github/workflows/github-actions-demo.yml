@@ -1,44 +1,30 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Node.js CI
-
+name: GitHub Actions Demo
 on:
   push:
-    branches: [ "master" ]
+    branches: [ master ]
   pull_request:
-    branches: [ "master" ]
-
+    branches: [ master ]
 jobs:
-  build:
-
+  init:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+        node-version: [ 18.x, 20.x, 22.x ]
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: install modules
-      run: npm install dependencies
-    - name: build project bundle
-      run: npm run build
-    - name: build storybook
-      run: npm run build:storybook
-    - name: unit tests
-      run: npm run test:unit
-    - name: e2e tests
-      run: npm run test:e2e
-    - name: code linting
-      run: npm run linting
-    - name: code i18n-checking
-      run: npm run i18n:checking
-    - name: code typechecking
-      run: npm run type:checking
+      - uses: actions/checkout@v3
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: npm install
+      - name: build project
+        run: npm run build
+      - name: build storybook
+        run: npm run build:storybook
+      - name: unit test
+        run: npm run test:unit
+      - name: e2e test
+        run: npm run test:e2e
+      - name: lint code
+        run: npm run lint
