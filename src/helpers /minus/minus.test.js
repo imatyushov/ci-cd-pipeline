@@ -1,12 +1,11 @@
 import { minus } from "./minus";
 
-
-describe('minus', () => {
+describe('minus', function () {
     test('positive', () => {
-        expect(minus(10, 10).toBe(0));
+        expect(minus(5, 5)).toBe(0);
     })
 
     test('negative', () => {
-        expect(minus(-10, -10).toBe(0));
+        expect(minus(-5, -5)).toBe(0);
     })
-})
+});
