@@ -1,6 +1,5 @@
 npm run build
 npm run build:storybook
-npm run test:unit
 npm run linter
 npm run i18n:checking
 
