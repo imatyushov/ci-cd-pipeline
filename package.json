@@ -19,7 +19,8 @@
     "test:e2e": "node ./scripts/e2e.test.js",
     "linter": "node ./scripts/eslint.js",
     "type-checking": "node ./scripts/typechecking.js",
-    "i18n:checking": "node ./scripts/i18n-checking.js"
+    "i18n:checking": "node ./scripts/i18n-checking.js",
+    "prepare": "husky"
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "husky": "^9.1.6"
   }
 }
